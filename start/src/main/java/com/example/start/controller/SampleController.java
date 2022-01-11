@@ -1,10 +1,7 @@
 package com.example.start.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class SampleController {
@@ -68,5 +65,19 @@ public class SampleController {
     @ResponseBody
     public String sampleWithoutRequestParam(String value) {
         return value;
+    }
+
+    @RequestMapping("sample/request-param/post")
+    @ResponseBody
+    public String sampleRequestParamPost(
+            @RequestParam("required") String required,
+            @RequestParam(value = "not_required", required = false) String notRequired,
+            @RequestParam(value = "default_value", defaultValue = "default value") String defalutValue,
+            String withoutRequestParamAnnotation
+    ) {
+        return String.format(
+                "Qurey String Options. required = %s, notRequired = %s, defaultValue = %s," +
+                        "withoutRequestParamAnootation = %s", required, notRequired, defalutValue,
+                withoutRequestParamAnnotation);
     }
 }
