@@ -7,6 +7,7 @@ import org.springframework.web.context.annotation.RequestScope;
 
 import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -79,5 +80,15 @@ public class TodoController {
     @GetMapping("startswith")
     public List<Todo> findCompleteItemStartsWith(String item) {
         return this.todoService.findItemStartswith(item);
+    }
+
+    @GetMapping("endswith")
+    public List<Todo> findCompleteItemEndsWith(String item) {
+        return this.todoService.findItemEndswith(item);
+    }
+
+    @GetMapping("gtlt")
+    public Map<String, List<Todo>> findGTLT(Integer id) {
+        return this.todoService.findGTLT(id);
     }
 }

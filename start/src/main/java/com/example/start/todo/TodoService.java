@@ -3,7 +3,9 @@ package com.example.start.todo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -70,4 +72,25 @@ public class TodoService {
     public List<Todo> findItemStartswith(String item) {
         return this.todoRepository.findByItemStartsWith(item);
     }
+
+    public List<Todo> findItemEndswith(String item) {
+        return this.todoRepository.findByItemEndsWith(item);
+    }
+
+    public Map<String, List<Todo>> findGTLT(Integer id) {
+        List<Todo> gt = this.todoRepository.findByIdGreaterThan(id);
+        List<Todo> gte = this.todoRepository.findByIdGreaterThan(id);
+        List<Todo> lt = this.todoRepository.findByIdLessThan(id);
+        List<Todo> lte = this.todoRepository.findByIdLessThan(id);
+
+        Map<String, List<Todo>> ret = new HashMap<>();
+        ret.put("gt", gt);
+        ret.put("gte", gte);
+        ret.put("lt", lt);
+        ret.put("lte", lte);
+
+        return ret;
+    }
+
+
 }
