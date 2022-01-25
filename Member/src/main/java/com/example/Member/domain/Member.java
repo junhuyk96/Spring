@@ -7,17 +7,12 @@ import javax.persistence.Id;
 
 @Entity
 public class Member {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
-    private String name;
-
-    public String getId() {
-        return id;
+    public int getSeq() {
+        return seq;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setSeq(int seq) {
+        this.seq = seq;
     }
 
     public String getName() {
@@ -27,4 +22,20 @@ public class Member {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int seq;
+    private String name;
+    private String ID;
+
+
 }

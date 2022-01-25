@@ -1,19 +1,12 @@
 package com.example.start.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.time.LocalDateTime;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SampleRestController {
-    @GetMapping("rest")
-    public String index() {
-        return "this is rest";
-    }
-
-    @GetMapping("rest/now")
-    public LocalDateTime now() {
-        return LocalDateTime.now();
+    @RequestMapping("request/{param}")
+    public String Path(@PathVariable("param") String parameter) {
+        return "입력 받은 String : " + parameter;
     }
 }

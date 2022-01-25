@@ -15,14 +15,14 @@ public class MemberController {
 
     @GetMapping("input")
     public String input_name(@RequestParam("name") String name,
-        @RequestParam("id") String id) {
+        @RequestParam("ID") String ID) {
         Member member = new Member();
 
-        member.setId(id);
+        member.setID(ID);
         member.setName(name);
 
         memberRepository.save(member);
 
-        return "ID : " + member.getId() + " NAME : " + member.getName();
+        return "ID : " + member.getID() + " NAME : " + member.getName();
     }
 }
