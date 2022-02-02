@@ -9,6 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class BookController {
     @RequestMapping(value="/create", method = RequestMethod.GET)
     public ModelAndView create() {
-        return new ModelAndView("create.html");
+        return new ModelAndView("/create");
     }
 }
