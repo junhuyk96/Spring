@@ -36,6 +36,4 @@ public class Member {
     private int seq;
     private String name;
     private String ID;
-
-
 }
